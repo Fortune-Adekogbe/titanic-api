@@ -1,4 +1,3 @@
-import sys
 import traceback
 import joblib
 import pandas as pd
