@@ -5,7 +5,8 @@ import pandas as pd
 from flask import Flask, jsonify, request
 
 app = Flask(__name__)
-
+lr = joblib.load("xgbrf_model.pkl")  # Load "model.pkl"
+model_columns = joblib.load("model_columns.pkl")  # Load "model_columns.pkl"
 
 @app.route('/predict', methods=['POST'])  # Your API endpoint URL would consist /predict
 def predict():
@@ -28,11 +29,4 @@ def predict():
 
 
 if __name__ == '__main__':
-    try:
-        port = int(sys.argv[1])  # This is for a command-line input
-    except:
-        port = 12345  # If you don't provide any port the port will be set to 12345
-
-    lr = joblib.load("xgbrf_model.pkl")  # Load "model.pkl"
-    model_columns = joblib.load("model_columns.pkl")  # Load "model_columns.pkl"
     app.run(port=5000, debug=True)
