@@ -4,7 +4,7 @@ import pandas as pd
 from flask import Flask, jsonify, request
 
 app = Flask(__name__)
-lr = joblib.load("xgbrf_model.pkl")  # Load "model.pkl"
+lr = joblib.load("model.pkl")  # Load "model.pkl"
 model_columns = joblib.load("model_columns.pkl")  # Load "model_columns.pkl"
 
 @app.route('/predict', methods=['POST'])  # Your API endpoint URL would consist /predict
